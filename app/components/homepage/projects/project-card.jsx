@@ -1,6 +1,6 @@
 // @flow strict
-
 import * as React from 'react';
+import Link from "next/link";
 
 function ProjectCard({ project }) {
 
@@ -38,29 +38,55 @@ function ProjectCard({ project }) {
           <div className="ml-4 lg:ml-8 mr-2">
             <span className=" text-white">tools:</span>
             <span className="text-gray-400">{` ['`}</span>
-            {
-              project.tools.map((tag, i) => (
-                <React.Fragment key={i}>
-                  <span className="text-amber-300">{tag}</span>
-                  {
-                    project.tools?.length - 1 !== i &&
-                    <span className="text-gray-400">{`', '`}</span>
-                  }
-                </React.Fragment>
-              ))
-            }
+            {project.tools.map((tag, i) => (
+              <React.Fragment key={i}>
+                <span className="text-amber-300">{tag}</span>
+                {project.tools?.length - 1 !== i && (
+                  <span className="text-gray-400">{`', '`}</span>
+                )}
+              </React.Fragment>
+            ))}
             <span className="text-gray-400">{"],"}</span>
           </div>
+
           <div>
             <span className="ml-4 lg:ml-8 mr-2 text-white">myRole:</span>
             <span className="text-orange-400">{project.role}</span>
             <span className="text-gray-400">,</span>
           </div>
+
           <div className="ml-4 lg:ml-8 mr-2">
             <span className="text-white">Description:</span>
             <span className="text-cyan-400">{' ' + project.description}</span>
             <span className="text-gray-400">,</span>
           </div>
+
+          {/* 🔗 Links Section */}
+          {(project.demo || project.code) && (
+            <div className="ml-4 lg:ml-8 mr-2 mt-3 flex gap-3">
+              {project.demo && (
+                <Link
+                  href={project.demo}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-sm text-violet-400 hover:underline"
+                >
+                  🔗 Demo
+                </Link>
+              )}
+              {project.code && (
+                <Link
+                  href={project.code}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-sm text-pink-400 hover:underline"
+                >
+                  💻 Code
+                </Link>
+              )}
+            </div>
+          )}
+
           <div><span className="text-gray-400">{`};`}</span></div>
         </code>
       </div>

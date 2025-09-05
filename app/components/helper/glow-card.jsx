@@ -1,87 +1,34 @@
 "use client"
 
-import { useEffect } from 'react';
+import dynamic from "next/dynamic";
+import React from "react";
 
-const GlowCard = ({ children, identifier }) => {
-  useEffect(() => {
-    if (typeof document === "undefined") return; // ❌ prevents server execution
+// Dynamically import GlowCard to disable SSR
+const GlowCard = dynamic(() => import("../components/GlowCard"), {
+  ssr: false,
+});
 
-    const CONTAINER = document.querySelector(`.glow-container-${identifier}`);
-    const CARDS = document.querySelectorAll(`.glow-card-${identifier}`);
-
-    const CONFIG = {
-      proximity: 40,
-      spread: 80,
-      blur: 12,
-      gap: 32,
-      vertical: false,
-      opacity: 0,
-    };
-
-    const UPDATE = (event) => {
-      if (!event) return;
-
-      for (const CARD of CARDS) {
-        const CARD_BOUNDS = CARD.getBoundingClientRect();
-
-        if (
-          event.x > CARD_BOUNDS.left - CONFIG.proximity &&
-          event.x < CARD_BOUNDS.left + CARD_BOUNDS.width + CONFIG.proximity &&
-          event.y > CARD_BOUNDS.top - CONFIG.proximity &&
-          event.y < CARD_BOUNDS.top + CARD_BOUNDS.height + CONFIG.proximity
-        ) {
-          CARD.style.setProperty('--active', 1);
-        } else {
-          CARD.style.setProperty('--active', CONFIG.opacity);
-        }
-
-        const CARD_CENTER = [
-          CARD_BOUNDS.left + CARD_BOUNDS.width * 0.5,
-          CARD_BOUNDS.top + CARD_BOUNDS.height * 0.5,
-        ];
-
-        let ANGLE =
-          (Math.atan2(event.y - CARD_CENTER[1], event.x - CARD_CENTER[0]) *
-            180) /
-          Math.PI;
-
-        ANGLE = ANGLE < 0 ? ANGLE + 360 : ANGLE;
-
-        CARD.style.setProperty('--start', ANGLE + 90);
-      }
-    };
-
-    document.body.addEventListener('pointermove', UPDATE);
-
-    const RESTYLE = () => {
-      if (!CONTAINER) return;
-      CONTAINER.style.setProperty('--gap', CONFIG.gap);
-      CONTAINER.style.setProperty('--blur', CONFIG.blur);
-      CONTAINER.style.setProperty('--spread', CONFIG.spread);
-      CONTAINER.style.setProperty(
-        '--direction',
-        CONFIG.vertical ? 'column' : 'row'
-      );
-    };
-
-    RESTYLE();
-
-    // Cleanup
-    return () => {
-      document.body.removeEventListener('pointermove', UPDATE);
-    };
-  }, [identifier]);
+const Page = () => {
+  const cardsData = [
+    { id: 1, title: "Card 1", content: "This is card 1" },
+    { id: 2, title: "Card 2", content: "This is card 2" },
+    { id: 3, title: "Card 3", content: "This is card 3" },
+  ];
 
   return (
-    <div className={`glow-container-${identifier} glow-container`}>
-      <article
-        className={`glow-card glow-card-${identifier} h-fit cursor-pointer border border-[#2a2e5a] transition-all duration-300 relative bg-[#101123] text-gray-200 rounded-xl hover:border-transparent w-full`}
-      >
-        <div className="glows"></div>
-        {children}
-      </article>
-    </div>
+    <main className="min-h-screen flex flex-col items-center justify-center bg-[#0f0f1a] p-8">
+      <h1 className="text-4xl font-bold text-white mb-8">My Portfolio</h1>
+
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 w-full max-w-6xl">
+        {cardsData.map((card) => (
+          <GlowCard key={card.id} identifier={card.id}>
+            <h2 className="text-xl font-semibold mb-2">{card.title}</h2>
+            <p>{card.content}</p>
+          </GlowCard>
+        ))}
+      </div>
+    </main>
   );
 };
 
-export default GlowCard;
+export default Page;

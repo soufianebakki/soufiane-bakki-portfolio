@@ -7,25 +7,35 @@ import Experience from "./components/homepage/experience";
 import HeroSection from "./components/homepage/hero-section";
 import Projects from "./components/homepage/projects";
 import Skills from "./components/homepage/skills";
-import GlowCardsWrapper from './components/helper/GlowCardsWrapper'; // Import the wrapper
+import dynamic from "next/dynamic";
+
+// Dynamically import GlowCardsWrapper to avoid SSR issues
+const GlowCardsWrapper = dynamic(
+  () => import("./components/helper/GlowCardsWrapper"),
+  { ssr: false } // ensures this component only runs in the browser
+);
 
 async function getData() {
-  const res = await fetch(`https://dev.to/api/articles?username=${personalData.devUsername}`)
+  const res = await fetch(
+    `https://dev.to/api/articles?username=${personalData.devUsername}`
+  );
 
   if (!res.ok) {
-    throw new Error('Failed to fetch data')
+    throw new Error("Failed to fetch data");
   }
 
   const data = await res.json();
-  const filtered = data.filter((item) => item?.cover_image).sort(() => Math.random() - 0.5);
+  const filtered = data
+    .filter((item) => item?.cover_image)
+    .sort(() => Math.random() - 0.5);
   return filtered;
-};
+}
 
 export default async function Home() {
   const blogs = await getData();
 
   return (
-    <div suppressHydrationWarning >
+    <div suppressHydrationWarning>
       <HeroSection />
       <AboutSection />
       <Experience />
@@ -34,9 +44,9 @@ export default async function Home() {
       <Education />
       <Blog blogs={blogs} />
       <ContactSection />
-      
-      {/* Add the glow cards wrapper if needed */}
+
+      {/* Client-only glow cards */}
       <GlowCardsWrapper />
     </div>
-  )
+  );
 }

@@ -7,8 +7,7 @@ import Experience from "./components/homepage/experience";
 import HeroSection from "./components/homepage/hero-section";
 import Projects from "./components/homepage/projects";
 import Skills from "./components/homepage/skills";
-import GlowCardsSection from "./components/GlowCardsSection";
-
+import GlowCardsSection from "./components/GlowCardsSection"; // client component
 
 async function getData() {
   const res = await fetch(
@@ -29,6 +28,14 @@ async function getData() {
 export default async function Home() {
   const blogs = await getData();
 
+  // Unique identifiers for glow cards
+  const glowCards = [
+    { id: "card-1", content: "Glow Card 1" },
+    { id: "card-2", content: "Glow Card 2" },
+    { id: "card-3", content: "Glow Card 3" },
+    { id: "card-4", content: "Glow Card 4" },
+  ];
+
   return (
     <div suppressHydrationWarning>
       <HeroSection />
@@ -40,8 +47,8 @@ export default async function Home() {
       <Blog blogs={blogs} />
       <ContactSection />
 
-      {/* Render client-only GlowCards */}
-      <GlowCardsSection />
+      {/* Render client-only Glow cards with unique identifiers */}
+      <GlowCardsSection cards={glowCards} />
     </div>
   );
 }

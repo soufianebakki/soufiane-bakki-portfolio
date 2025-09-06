@@ -1,11 +1,15 @@
 "use client";
 
-import dynamic from 'next/dynamic';
+import GlowCard from "./glow-card";
 
-const GlowCard = dynamic(() => import('./glow-card'), { 
-  ssr: false 
-});
-
-export default function GlowCardClient({ children, identifier }) {
-  return <GlowCard identifier={identifier}>{children}</GlowCard>;
+export default function GlowCardsWrapper({ cards }) {
+  return (
+    <div className="flex flex-wrap gap-4">
+      {cards.map((card) => (
+        <GlowCard key={card.id} identifier={card.id}>
+          {card.content}
+        </GlowCard>
+      ))}
+    </div>
+  );
 }

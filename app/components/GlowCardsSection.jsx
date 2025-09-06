@@ -1,7 +1,7 @@
 "use client";
 
-import GlowCardsWrapper from "./helper/GlowCardsWrapper"; // relative to this file
+import GlowCardsWrapper from "./helper/GlowCardsWrapper";
 
-export default function GlowCardsSection() {
-  return <GlowCardsWrapper />;
+export default function GlowCardsSection({ cards }) {
+  return <GlowCardsWrapper cards={cards} />;
 }

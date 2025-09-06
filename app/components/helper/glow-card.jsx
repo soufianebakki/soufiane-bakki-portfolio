@@ -1,18 +1,19 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 
-const GlowCard = ({ children, identifier }) => {
+export default function GlowCard({ children, identifier }) {
   const [isClient, setIsClient] = useState(false);
+  const containerRef = useRef(null);
+  const cardsRef = useRef([]);
 
   useEffect(() => {
     setIsClient(true);
-    
-    // Only run this code on the client side
-    if (typeof window === 'undefined') return;
 
-    const CONTAINER = document.querySelector(`.glow-container-${identifier}`);
-    const CARDS = document.querySelectorAll(`.glow-card-${identifier}`);
+    if (typeof window === "undefined") return; // extra safety
+
+    const CONTAINER = containerRef.current;
+    const CARDS = cardsRef.current;
 
     if (!CONTAINER || !CARDS.length) return;
 
@@ -25,74 +26,62 @@ const GlowCard = ({ children, identifier }) => {
       opacity: 0,
     };
 
-    const UPDATE = (event) => {
+    const handlePointerMove = (event) => {
       for (const CARD of CARDS) {
-        const CARD_BOUNDS = CARD.getBoundingClientRect();
+        const bounds = CARD.getBoundingClientRect();
+        const isInside =
+          event.x > bounds.left - CONFIG.proximity &&
+          event.x < bounds.left + bounds.width + CONFIG.proximity &&
+          event.y > bounds.top - CONFIG.proximity &&
+          event.y < bounds.top + bounds.height + CONFIG.proximity;
 
-        if (
-          event?.x > CARD_BOUNDS.left - CONFIG.proximity &&
-          event?.x < CARD_BOUNDS.left + CARD_BOUNDS.width + CONFIG.proximity &&
-          event?.y > CARD_BOUNDS.top - CONFIG.proximity &&
-          event?.y < CARD_BOUNDS.top + CARD_BOUNDS.height + CONFIG.proximity
-        ) {
-          CARD.style.setProperty("--active", 1);
-        } else {
-          CARD.style.setProperty("--active", CONFIG.opacity);
-        }
+        CARD.style.setProperty("--active", isInside ? 1 : CONFIG.opacity);
 
-        const CARD_CENTER = [
-          CARD_BOUNDS.left + CARD_BOUNDS.width * 0.5,
-          CARD_BOUNDS.top + CARD_BOUNDS.height * 0.5,
-        ];
+        const centerX = bounds.left + bounds.width / 2;
+        const centerY = bounds.top + bounds.height / 2;
+        let angle = (Math.atan2(event.y - centerY, event.x - centerX) * 180) / Math.PI;
+        angle = angle < 0 ? angle + 360 : angle;
 
-        let ANGLE =
-          (Math.atan2(event?.y - CARD_CENTER[1], event?.x - CARD_CENTER[0]) *
-            180) /
-          Math.PI;
-
-        ANGLE = ANGLE < 0 ? ANGLE + 360 : ANGLE;
-
-        CARD.style.setProperty("--start", ANGLE + 90);
+        CARD.style.setProperty("--start", angle + 90);
       }
     };
 
-    document.body.addEventListener("pointermove", UPDATE);
-
-    const RESTYLE = () => {
+    const applyStyles = () => {
       CONTAINER.style.setProperty("--gap", CONFIG.gap);
       CONTAINER.style.setProperty("--blur", CONFIG.blur);
       CONTAINER.style.setProperty("--spread", CONFIG.spread);
-      CONTAINER.style.setProperty(
-        "--direction",
-        CONFIG.vertical ? "column" : "row"
-      );
+      CONTAINER.style.setProperty("--direction", CONFIG.vertical ? "column" : "row");
     };
 
-    RESTYLE();
-    UPDATE();
+    applyStyles();
+    document.body.addEventListener("pointermove", handlePointerMove);
 
     return () => {
-      document.body.removeEventListener("pointermove", UPDATE);
+      document.body.removeEventListener("pointermove", handlePointerMove);
     };
   }, [identifier]);
 
-  // Render a simple div during SSR, then the actual card on client
+  // During SSR: simple div to avoid "document is not defined"
   if (!isClient) {
     return (
-      <div className={`h-fit cursor-pointer border border-[#2a2e5a] bg-[#101123] text-gray-200 rounded-xl w-full`}>
+      <div
+        className="h-fit cursor-pointer border border-[#2a2e5a] bg-[#101123] text-gray-200 rounded-xl w-full"
+        ref={(el) => (cardsRef.current[0] = el)}
+      >
         {children}
       </div>
     );
   }
 
   return (
-    <div className={`glow-container-${identifier} glow-container`}>
-      <article className={`glow-card glow-card-${identifier} h-fit cursor-pointer border border-[#2a2e5a] transition-all duration-300 relative bg-[#101123] text-gray-200 rounded-xl hover:border-transparent w-full`}>
+    <div ref={containerRef} className={`glow-container-${identifier} glow-container`}>
+      <article
+        ref={(el) => (cardsRef.current[0] = el)}
+        className={`glow-card glow-card-${identifier} h-fit cursor-pointer border border-[#2a2e5a] transition-all duration-300 relative bg-[#101123] text-gray-200 rounded-xl hover:border-transparent w-full`}
+      >
         <div className="glows"></div>
         {children}
       </article>
     </div>
   );
-};
-
-export default GlowCard;
+}

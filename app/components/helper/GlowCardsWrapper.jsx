@@ -1,8 +1,7 @@
-// components/helper/GlowCardsWrapper.jsx
 "use client";
 
-import GlowCard from "./glow-card"; // directly import client GlowCard
+import GlowCard from "./glow-card"; // no need for dynamic here
 
-export default function GlowCardsWrapper({ children, identifier }) {
-  return <GlowCard identifier={identifier}>{children}</GlowCard>;
+export default function GlowCardsWrapper({ identifier = "main" }) {
+  return <GlowCard identifier={identifier}>Example Glow Card</GlowCard>;
 }

@@ -1,5 +1,4 @@
-// components/GlowCardsSection.jsx
-"use client";
+"use client"; // must be first line
 
 import GlowCardsWrapper from "./helper/GlowCardsWrapper";
 

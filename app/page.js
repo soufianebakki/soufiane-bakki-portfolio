@@ -8,7 +8,9 @@ import Experience from "./components/homepage/experience";
 import HeroSection from "./components/homepage/hero-section";
 import Projects from "./components/homepage/projects";
 import Skills from "./components/homepage/skills";
-import GlowCardsSection from "./components/GlowCardsSection"; // client component
+
+// 🔹 GlowCardsSection should be imported normally from a client component
+import GlowCardsSection from "./components/GlowCardsSection";
 
 async function getData() {
   const res = await fetch(
@@ -20,10 +22,7 @@ async function getData() {
   }
 
   const data = await res.json();
-  const filtered = data
-    .filter((item) => item?.cover_image)
-    .sort(() => Math.random() - 0.5);
-  return filtered;
+  return data.filter((item) => item?.cover_image).sort(() => Math.random() - 0.5);
 }
 
 export default async function Home() {
@@ -39,7 +38,8 @@ export default async function Home() {
       <Education />
       <Blog blogs={blogs} />
       <ContactSection />
-      {/* Client-only GlowCards */}
+
+      {/* Client-only glow cards */}
       <GlowCardsSection />
     </div>
   );

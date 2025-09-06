@@ -1,7 +1,8 @@
+// components/GlowCardsSection.jsx
 "use client";
 
 import GlowCardsWrapper from "./helper/GlowCardsWrapper";
 
-export default function GlowCardsSection({ cards }) {
-  return <GlowCardsWrapper cards={cards} />;
+export default function GlowCardsSection() {
+  return <GlowCardsWrapper />;
 }

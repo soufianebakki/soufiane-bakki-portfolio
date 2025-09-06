@@ -1,15 +1,8 @@
+// components/helper/GlowCardsWrapper.jsx
 "use client";
 
-import GlowCard from "./glow-card";
+import GlowCard from "./glow-card"; // directly import client GlowCard
 
-export default function GlowCardsWrapper({ cards }) {
-  return (
-    <div className="flex flex-wrap gap-4">
-      {cards.map((card) => (
-        <GlowCard key={card.id} identifier={card.id}>
-          {card.content}
-        </GlowCard>
-      ))}
-    </div>
-  );
+export default function GlowCardsWrapper({ children, identifier }) {
+  return <GlowCard identifier={identifier}>{children}</GlowCard>;
 }

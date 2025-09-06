@@ -1,3 +1,4 @@
+// app/page.js
 import { personalData } from "@/utils/data/personal-data";
 import AboutSection from "./components/homepage/about";
 import Blog from "./components/homepage/blog";
@@ -28,14 +29,6 @@ async function getData() {
 export default async function Home() {
   const blogs = await getData();
 
-  // Unique identifiers for glow cards
-  const glowCards = [
-    { id: "card-1", content: "Glow Card 1" },
-    { id: "card-2", content: "Glow Card 2" },
-    { id: "card-3", content: "Glow Card 3" },
-    { id: "card-4", content: "Glow Card 4" },
-  ];
-
   return (
     <div suppressHydrationWarning>
       <HeroSection />
@@ -46,9 +39,8 @@ export default async function Home() {
       <Education />
       <Blog blogs={blogs} />
       <ContactSection />
-
-      {/* Render client-only Glow cards with unique identifiers */}
-      <GlowCardsSection cards={glowCards} />
+      {/* Client-only GlowCards */}
+      <GlowCardsSection />
     </div>
   );
 }

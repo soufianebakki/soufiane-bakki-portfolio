@@ -1,6 +1,11 @@
 "use client";
 
-import GlowCard from "./glow-card";
+import dynamic from 'next/dynamic';
+
+// Use dynamic import with ssr: false for the GlowCard
+const GlowCard = dynamic(() => import('./glow-card'), { 
+  ssr: false 
+});
 
 export default function GlowCardsWrapper() {
   const cardsData = [
@@ -14,7 +19,7 @@ export default function GlowCardsWrapper() {
       {cardsData.map((card) => (
         <GlowCard key={card.id} identifier={card.id}>
           <h2 className="text-xl font-semibold mb-2">{card.title}</h2>
-          <p>{card.content}</p>
+          <p>{content}</p>
         </GlowCard>
       ))}
     </div>

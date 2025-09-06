@@ -7,13 +7,7 @@ import Experience from "./components/homepage/experience";
 import HeroSection from "./components/homepage/hero-section";
 import Projects from "./components/homepage/projects";
 import Skills from "./components/homepage/skills";
-import dynamic from "next/dynamic";
-
-// Dynamically import GlowCardsWrapper to avoid SSR issues
-const GlowCardsWrapper = dynamic(
-  () => import("./components/helper/GlowCardsWrapper"),
-  { ssr: false } // ensures this component only runs in the browser
-);
+import GlowCardsSection from "./components/GlowCardsSection"; // Import client wrapper
 
 async function getData() {
   const res = await fetch(
@@ -45,8 +39,8 @@ export default async function Home() {
       <Blog blogs={blogs} />
       <ContactSection />
 
-      {/* Client-only glow cards */}
-      <GlowCardsWrapper />
+      {/* Render client-only GlowCards */}
+      <GlowCardsSection />
     </div>
   );
 }

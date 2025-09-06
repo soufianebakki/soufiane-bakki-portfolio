@@ -1,7 +1,11 @@
-"use client"; // THIS MUST BE A CLIENT COMPONENT
+"use client";
 
-import GlowCardsWrapper from "./helper/GlowCardsWrapper";
+import dynamic from 'next/dynamic';
 
-export default function GlowCardsSection() {
-  return <GlowCardsWrapper />;
+const GlowCard = dynamic(() => import('./glow-card'), { 
+  ssr: false 
+});
+
+export default function GlowCardClient({ children, identifier }) {
+  return <GlowCard identifier={identifier}>{children}</GlowCard>;
 }

